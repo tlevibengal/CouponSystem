@@ -1,0 +1,3 @@
+org.apache.derby.jdbc.ClientDriver
+jdbc:derby://localhost:1527/coupon_system_db;
+jdbc:derby://localhost:1527/coupon_system_db;create=true
