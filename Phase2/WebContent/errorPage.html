@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	
+
+</head>
+<style>
+	
+	div#userIncorrectDiv {
+	height: 50%;
+	width: 85%;
+	left: 5%;
+	top: 21%;
+	background-color: #fff;
+	position: absolute;
+	border: 10px ridge #CCD3DA;
+}
+
+div#inneruserIncorrectDiv {
+	height: 75%;
+	width: 92%;
+	background-color: #1A385C;
+	position: absolute;
+	top: 3%;
+	left: 2%;
+	border: 5px ridge #CCD3DA;
+	font-size: larger;
+	padding-top: 15%;
+	text-align: center;
+}
+
+button#tryAgain {
+	border: 5px ridge #CCD3DA;
+	left: 3%;
+	bottom: 20%;
+	width: 45%;
+	font-weight: 900;
+	font-size: large;
+}
+
+button#exit {
+	border: 5px ridge #CCD3DA;
+	right: 3%;
+	bottom: 20%;
+	width: 45%;
+	font-size: large;
+	font-weight: 900;
+}
+
+button {
+	background-color: #1A385C;
+	color: #fff;
+	font-family: cursive;
+	height: 20%;
+	width: 27%;
+	position: absolute;
+	bottom: 4%;
+	right: 3%;
+}
+
+div#first2 {
+	position: absolute;
+	color: #CCD3DA;
+}
+
+div#second2 {
+	font-size: medium;
+	position: initial;
+	margin-left: 15%;
+	margin-top: 4%;
+}
+
+div#m2 {
+	margin-top: 5%;
+	margin-left: 7%;
+}
+
+div#logo2 {
+	background-image: url('comp pics/coupon.png');
+	background-repeat: no-repeat;
+	background-size: 28%;
+	background-position: 0% 0%;
+	height: 29%;
+	width: 95%;
+	left: 27%;
+	top: 3%;
+	position: absolute;
+}
+
+div#logoWriting2 {
+	position: absolute;
+	left: 30%;
+	font-family: cursive;
+	font-size: large;
+	color: #fff;
+	font-weight: 900;
+}
+
+#loginCont {
+	top: 7%;
+	width: 20%;
+	padding: 8% 2% 7% 2%;
+	border-radius: 0px;
+	float: left;
+	left: 37%;
+	background-color: #1A385C;
+	color: #fff;
+	font-family: cursive;
+	font-size: larger;
+	position: absolute;
+	border: 15px ridge #fff;
+	height: 38%;
+}
+
+div#loginPopUp {
+	background-color: #CCD3DA;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+	position: fixed;
+	width: 100%;
+	display: none;
+	z-index: 99;
+}
+	
+	</style>
+<body ng-app="myApp">
+
+
+
+
+	<div id="container" ng-controller="myController">
+		<div id="header">
+
+			<div id="loginPopUp" style="display: block">
+
+				<div id="loginCont">
+					<div id="userIncorrectDiv">
+						<div id=inneruserIncorrectDiv>
+
+							The user, password or client type are incorrect.
+							<button id="tryAgain" onClick="exitLogin()">Try Agian</button>
+							<button id="exit" onClick="exitLogin()">Exit</button>
+						</div>
+					</div>
+
+					<div id="logo2">
+						<div id="logoWriting2">
+							<div id="first2">
+								C<br> M<br> S<br>
+							</div>
+							<div id="second2">
+								<div id="c">oupon</div>
+								<div id="m2">anagement</div>
+								<div id="s2">ystems</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	
+	
+<script>
+function exitLogin() {
+    window.location = "index.html";
+}
+</script>
+</body>
+
+</html>

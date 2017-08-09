@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src="appCompany.js"></script>
+    <link href="Company.css" rel="stylesheet" />
+    <script src="Company.js"></script>
+</head>
+<body  ng-app="myApp">
+   	<div  id="container" ng-controller="myController">
+	<div id="byePop">
+	
+<div id="logOutCont">
+	See you Soon, 
+				GoodBye!
+<div id="logo2">
+				<div id="logoWriting2">
+					<div id="first2">
+						C<br> M<br> S<br>
+					</div>
+					<div id="second2">
+						<div id="c">oupon</div>
+						<div id="m2">anagement</div>
+						<div id="s2">ystems</div>
+					</div>
+				</div>
+			</div>
+					
+			</div>
+		</div>
+	
+	
+			<div id="headerMain">		
+		<div id="welcome"> Welcome to the coupon management system</div>
+		<div id="actions">
+				<div id="history"></div>
+		<div onClick="pop('byePop'),quit()" ng-click="goodBye()" id="logoutIcon"></div>
+				<div id="help"></div>
+		
+		</div>
+			<div id="logo">
+				<div id="logoWriting">
+					<div id="first">
+						C<br> M<br> S<br>
+					</div>
+					<div id="second">
+						<div id="c">oupon</div>
+						<div id="m">anagement</div>
+						<div id="s">ystems</div>
+					</div>
+				</div>
+			
+			</div>
+			
+			
+		</div>
+		<div id="blueLine"></div>
+					    <div id="logged">Welcome back {{userNamefromSession}},<br /> What would you like to do today?</div>
+		
+
+     <div id="innerBackground">
+
+                <div class="MAIN3X3GRID">
+            
+               <div id="createCell">
+                                  <!--CREATE -->
+                    <button id="create1">Create coupon</button>
+                    <div id="createForm">                       
+                     <button class="closeX" id="closeResponse" onclick="Do()">X</button>
+                      <form action="rest/companies/upload" method="post" enctype="multipart/form-data" target="_self" name="createCoupForm" novalidate>
+                            <p>  Coupon name: <input id="coupName" ng-model="couponName" type="text" name="couponName" maxlength="15" required></p>
+                            <p> a short description: <input ng-model="description"type="text" id="coupDes" maxlength="20"></p>
+                            <p>Start Date:  <input ng-model="startDate" type="date" id="start"></p>
+                            <p>Expiration Date:  <input ng-model="endDate" type="date" id="end"></p>
+                            <p>Price: <input ng-model="price" type="number" id="price"></p>
+                            <p> Amount: <input ng-model="amount" type="number" id="amount"></p>
+                           <p id="C-TYPES">
+                                Coupon type:
+                                <select   ng-model="type" id="coupTypes" onclick="getSetCouponType()">
+                                    <option value="FOOD">Food & Gourmet</option>
+                                    <option value="HOME">House & Home</option>
+                                    <option value="SPORTS">Sporting Goods</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="BEAUTY">Beauty & spa</option>
+                                    <option value="GAMES">Toys & Games</option>
+                                    <option value="FASHION">  Clothing & accssecories </option>
+                                    <option value="ELECTRONICS"> Computers & Laptops</option>
+                                </select>
+       </form>
+                              <button class="reset" type="reset" id="resetButtoncreate">Reset</button> 
+                        <button class="submit" id="create" type="submit" value="submit" ng-click="create()">Submit </button>
+                    </div>
+                    <div class="res" id="createResponse">  <p> {{createdCoupon}}</p><button class="closeX" id="closeReply" onclick="Do()">X</button> </div>
+       
+         </div>
+         
+         <div id="updateCell">    
+   <!--UPDATE-->
+   
+   <div>
+     <button id="UPDATE" >Update coupon</button><br><br>
+                    <div class="res" id="UP1Response">
+                                                <button class="closeX" id="closeResponseUP" onclick="Do()">X</button>
+                                          <form>                       
+                   Enter the coupon id:<input type="number" ng-model="upCoupId" id="upcoupIdo" />
+                 <p id="p1">   Please update the following:<br>
+                            Coupon price: <input ng-model="upPrice" type="number" ></br>
+                            Expiration Date:  <input ng-model="upDate" type="date" id="coupEndDate"></p>
+                            <button class="reset"  type="reset" id="resetButtonUP">Reset</button>
+                            </form>
+      <button class="submit" id="UP" type="submit" value="submit" ng-click="doUpdate(upCoupId,upPrice,upDate)">Submit </button>
+                            
+</div>
+                    <div class="res" id="updateResponse">
+     <p>{{updatedCoup}}     </p>
+					<button class="closeX" id="closeReply" onclick="Do()">X</button>
+                        </div>
+   </div>
+   </div>    
+   
+   <div id="deleteCell">
+                  <div> 
+                  <!--DELETE-->
+                    <button id="DEL" ng-click="resetFields()" >Delete coupon</button><br><br>
+                    <div id="DELForm">
+                        <button class="closeX" id="closeResponsedel" onclick="Do()">X</button>
+                        <form><p> Enter the coupon id you want to delete:<input ng-model="dlId" type="number" id="DcoupId" /> </p>
+                            <button class="reset"  type="reset" id="resetButton1">Reset</button> </form>
+                        <button class="submit" id="DeleteC" type="submit" value="submit" ng-click="deleteCoup(dlId)">Submit </button>
+                    </div>
+                    <div class="res" id="DELResponse">
+     <div><p></p>
+     <p>{{deletedCoup}} </p>
+     <button class="closeX" id="closeReply" onclick="Do()">X</button>
+                        </div>
+                        </div>
+                   
+</div>
+
+
+<div id="findCell">
+
+				<!--find a comp-->
+			  <div>
+       <button id="FINDBUTTON" ng-click="resetFields()">Find Coupon</button>
+                    <div class="res" id="FINDForm">
+				  <form>
+                        <p>Enter the coupon id you want to find:<input ng-model="coupId" type="number" id="Findcoup" /> </p>
+                        <button class="closeX" id="closeResponsefind" onclick="Do()">X</button>
+                        <button class="reset"  type="reset" id="resetButtonFind">Reset</button>
+                        </form>
+                        <button class="submit" id="FIND" type="submit" value="submit" ng-click="findCoupon(coupId)">Submit </button>
+                    </div>
+                    
+                    
+	   <div class="res" id="FINDResponse"> 				
+ <p id="header"> The Coupon you requested {{NoCoupon}}</p>
+  	<table id="findCoupTable" border="1">
+					<thead>
+							<tr>
+							<th id="idHead">Id</th>
+								<th id="nameHead">Name</th>
+								<th id="desHead">Description</th>
+								<th id="sdateHead">Start-Date</th>
+								<th id="edateHead">End-Date</th>
+								<th id="priceHead">Price</th>
+								<th id="amountHead">Amount</th>
+								<th id="typeHead">Coupon Type</th>
+							</tr>
+						<tbody>
+							<tr>
+								<td>{{ gotCoupon.couponId}}</td>
+								<td>{{ gotCoupon.couponName}}</td>
+								<td>{{ gotCoupon.description}}</td>
+								<td id="startcolumn">{{ gotCoupon.startDate }}</td>
+								<td id="endcolumn">{{ gotCoupon.endDate}}</td>
+								<td>{{ gotCoupon.price}}</td>
+								<td>{{ gotCoupon.amount }}</td>
+								<td id="typecolumn">{{ gotCoupon.couponType}}</td>
+							</tr>
+						</tbody>
+					</table>
+					{{errors}}
+					<button class="closeX" id="closeReply7" onclick="Do()">X</button>
+</div>
+            </div>
+            
+            
+            <div id="findAllCell">
+  <div> <button id="FindALL" ng-click="getAllCoups()">Find all coupons</button>			
+		  <div id="responseMainCoup">
+				<button class="closeX" id="closeResponseall" onclick="Do()">X</button>
+<div class="tooltip"><button id="refresh" ng-click="refreshTables()"></button>  <span class="tooltiptext">Refresh data</span></div>
+ 				<p id="allCoupHeader">All existing coupons</p>
+ 
+  <div id="searchDiv">
+			<div id="orderByDiv">
+				Sort by:<select id="selectByInput" ng-model="sortColumn">
+					<option value="couponId">coupon Id</option>
+					<option value="couponName">coupon Name</option>
+					<option value="price">coupon Price</option>
+					<option value="couponType">coupon Type</option>
+					<option value="endDate">coupon Expiration Date</option>
+				</select>
+			</div>
+
+		</div>
+		<div id="teee">
+          	<div id="CouoScrollDiv">
+					<table id="allCoupTable" border="1">
+						<thead>
+							<tr>
+								<th id="idHead">Id</th>
+								<th id="nameHead">Name</th>
+								<th id="desHead">Description</th>
+								<th id="sdateHead">Start-Date</th>
+								<th id="edateHead">End-Date</th>
+								<th id="priceHead">Price</th>
+								<th id="amountHead">Amount</th>
+								<th id="typeHead">Coupon Type</th>
+								<th id="actionsHead">Actions</th>
+							</tr>
+							</thead>
+						<tbody>
+							<tr ng-repeat="coupon in coupons  |  orderBy:sortColumn   | filter:searchText">
+								<td>{{ coupon.couponId}}</td>
+								<td>{{ coupon.couponName}}</td>
+								<td >{{ coupon.description}}</td>
+								<td id="startDateColumn">{{ coupon.startDate }}</td>
+								<td id="endDateColumn">{{ coupon.endDate}}</td>
+								<td>{{ coupon.price}}</td>
+								<td>{{ coupon.amount }}</td>
+								<td id="couponTypeColumn">{{ coupon.couponType}}</td>
+																						
+			<td id="actionsColumn"><input id="allCoupUp" type="button"
+									ng-click="allCoupUpDiv=true" class="blue-button" value="Edit" />
+									<input type="button" ng-click="allCoupDelDiv=true"
+									class="red-button" value="Delete" />
+
+									<div class="wrapper">
+										<p ng-hide="allCoupUpDiv"></p>
+										<div ng-show="allCoupUpDiv">
+											New Price:<input id="1" type="number" name="price" ng-model="upCoupprice2" /><br>
+											New endDate:<input id="dateupdate" type="date" ng-model="upCoupDate2" /> 
+											<input id="upBtn" type="button"	ng-click="doUpdate(this.coupon.couponId,upCoupprice2,upCoupDate2)"
+												value="Update" />
+
+										</div>
+									</div>
+
+									<div class="wrapper">
+										<p ng-hide="allCoupDelDiv"></p>
+										<div ng-show="allCoupDelDiv">
+											<h3>Are you sure you want to delete this coupon?</h3>
+											<input id="yes" type="button"
+												ng-click="deleteCoup(this.coupon.couponId)" value="Yes" />
+												<input id="no" type="button"
+												ng-click="refreshTables()" value=" No" />
+
+										</div>
+									</div></td>
+							</tr>
+						</tbody>
+
+
+					</table>
+
+				</div>
+  
+	
+  </div>
+    </div>
+
+
+                    </div>
+
+	<div id="quitCell"><!--QUIT-->
+	 <div>   <button id="quit" onClick="pop('byePop'),quit()" ng-click="goodBye()">Quit</button> </div> 
+	                  </div>
+                  
+                     </div>
+                </div>
+            </div>
+            
+            
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

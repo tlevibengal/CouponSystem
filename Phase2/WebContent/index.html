@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src="main.js"></script>
+<link href="main.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp">
+
+
+
+
+
+	<div id="container" ng-controller="myController">
+		<div id="header">
+		<div id="actions" onClick="pop('loginPopUp')" id="loginIcon">
+				<!--  <div id="signUp" onClick="pop('signPop')"></div>-->
+		
+		</div>
+		
+			<div id="logo">
+				<div id="logoWriting">
+					<div id="first">
+						C<br> M<br> S<br>
+					</div>
+					<div id="second">
+						<div id="c">oupon</div>
+						<div id="m">anagement</div>
+						<div id="s">ystems</div>
+					</div>
+				</div>
+			</div>
+			<div id="searchDiv">
+			
+
+				<input id="searchBox" type="text"
+					placeHolder="What are you looking for?" />
+			</div>
+		</div>
+
+
+		<div id="promo"></div>
+		<div id="ct">
+			<table border="1">
+					<tr ng-repeat="type in types"><td>{{type}}</td></tr>           
+			</table>
+		</div>
+
+
+		<div id="main">
+			<div id="MAIN3X3GRID" ng-repeat="coupon in topCoupons">
+				<div class="coup" id="coup1">
+					<div id="coupid">Coupon id: {{ coupon.couponId}}</div>
+					<div id="imageBox">	<img id=image src="{{coupon.image}}" ></div>
+					<div id="title">{{ coupon.couponName}}</div>
+					<div id="description">{{ coupon.description}}</div>
+					<div id="start">Starts: {{ coupon.startDate }}</div>
+					<div id="end">Expires:{{ coupon.endDate}}</div>
+					<div id=price>{{ coupon.price}} $</div>
+					<div id="buynowButton" onClick="pop('loginPopUp')">Buy Now</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+<div id="loginPopUp">
+
+<div id="loginCont">
+<button  id="closePop1" onClick="hide('loginPopUp')">X</button>
+
+<div id="logo2">
+				<div id="logoWriting2">
+					<div id="first2">
+						C<br> M<br> S<br>
+					</div>
+					<div id="second2">
+						<div id="c">oupon</div>
+						<div id="m2">anagement</div>
+						<div id="s2">ystems</div>
+					</div>
+				</div>
+			</div>
+					<form id="form_id" action="rest/simple" method="get" name="myform">
+					<label>User Name :</label>
+					<input type="text" name="username" id="username" /> 
+						<label>	Password :</label> 
+					<input type="password" name="password" id="password" />
+					Please choose the user type:<br>
+						
+						<input type="radio" name="clientType" id="admin" value="ADMIN"> Administrator<br>
+  <input type="radio" name="clientType" id="company" value="COMPANY">Company<br>
+  <input type="radio" name="clientType" id="customer" value="CUSTOMER"> Customer<br><br>
+						 <input type="submit" id="submit" value="."/> 
+					<input type="reset"
+						id="reset" />
+				</form>
+			</div>
+		</div>
+
+<div id="signPop">
+			
+			<div id="signUpCont">
+									<button  id="closePop2" onClick="hide('signPop')">X</button>
+			
+			<form id="signUpForm">
+			Email <input type="text" id="sf" /><br>
+			Full name <input type="text" id="sf" /><br>
+			UserName <input type="text" id="sf" /><br>
+			Password <input type="text"  id="sf"/><br>
+			 <button type="button" id="sf" >Sign Up</button> 
+			
+			</form>
+			</div>
+			</div>
+			
+
+
+</body>
+
+</html>

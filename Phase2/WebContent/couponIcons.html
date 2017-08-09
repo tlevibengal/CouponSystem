@@ -1,0 +1,41 @@
+<div id="searchDiv">
+			<div id="orderByDiv">
+				Sort by:<select id="selectByInput" ng-model="sortColumn">
+					<option value="couponId">coupon Id</option>
+					<option value="couponName">coupon Name</option>
+					<option value="price">coupon Price</option>
+					<option value="couponType">coupon Type</option>
+					<option value="endDate">coupon Expiration Date</option>
+				</select>
+			</div>
+
+		</div>
+	
+		<div id="mainReplyDiv">
+			<div id="buyResponseDiv">
+				<button id="closeReply">X</button>
+				{{gotCoupon}}
+				<button id="myCoups" onClick="pop('allpurchasedResponse')">
+					See my Coupons</button>
+
+			</div>
+		</div>
+	<div id="main">
+			<div id="testGrid" ng-repeat="coupon in coupons  |  orderBy:sortColumn ">
+			
+				<div class="coup" id="coup1">
+					<div id="coupid">Id: {{ coupon.couponId}}</div>
+					<div id="title">{{ coupon.couponName}}</div>
+					<div id="description">{{ coupon.description}}</div>
+					<div id="start2">Starts: {{ coupon.startDate }}</div>
+					<div id="end2">, Ends:{{ coupon.endDate}}</div>
+					<div id=price>{{ coupon.price}} $</div>
+					<div id="buynowButton" onClick="pop('mainReplyDiv')" ng-click="buyCoupon(this.coupon.couponId)">	Buy Now</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		
+</div>

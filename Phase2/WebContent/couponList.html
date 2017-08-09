@@ -1,0 +1,70 @@
+
+
+		<div id="searchDiv2">
+			<div id="orderByDiv">
+				Sort by:<select id="selectByInput" ng-model="sortColumn">
+					<option value="couponId">coupon Id</option>
+					<option value="couponName">coupon Name</option>
+					<option value="price">coupon Price</option>
+					<option value="couponType">coupon Type</option>
+					<option value="endDate">coupon Expiration Date</option>
+				</select>
+			</div>
+
+		</div>
+	
+		<div id="mainReplyDiv">
+			<div id="buyResponseDiv">
+				<button id="closeReply">X</button>
+				{{gotCoupon}}
+				<button id="myCoups" onClick="pop('allpurchasedResponse')">
+					See my Coupons</button>
+
+			</div>
+		</div>
+		<div id="dataDiv2">
+
+			<div id="CouoScrollDiv">
+				<table id="allCoupTable" border="1">
+					<thead>
+						<tr>
+							<th id="idHead">Id</th>
+							<th id="nameHead">Name</th>
+							<th id="desHead">Description</th>
+							<th id="sdateHead">Start-Date</th>
+							<th id="edateHead">End-Date</th>
+							<th id="priceHead">Price</th>
+							<th id="typeHead">Coupon Type</th>
+							<th id="actionsHead">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="coupon in coupons  |  orderBy:sortColumn   | filter:searchText">
+							<td>{{ coupon.couponId}}</td>
+							<td>{{ coupon.couponName}}</td>
+							<td>{{ coupon.description}}</td>
+							<td id="startDateColumn">{{ coupon.startDate }}</td>
+							<td id="endDateColumn">{{ coupon.endDate}}</td>
+							<td>{{ coupon.price}}</td>
+							<td id="couponTypeColumn">{{ coupon.couponType}}</td>
+							<td id="actionsColumn">
+								<button id="allCoupBuy" onClick="pop('mainReplyDiv')"
+									ng-click="buyCoupon(this.coupon.couponId)">Purchase</button>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</div>
